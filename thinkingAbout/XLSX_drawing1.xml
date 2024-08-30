@@ -2,16 +2,16 @@
 <xdr:wsDr xmlns:xdr="http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
     <xdr:twoCellAnchor editAs="oneCell">
         <xdr:from>
-            <xdr:col>1</xdr:col>
-            <xdr:colOff>19050</xdr:colOff>
+            <xdr:col>0</xdr:col>
+            <xdr:colOff>0</xdr:colOff>
             <xdr:row>2</xdr:row>
-            <xdr:rowOff>28575</xdr:rowOff>
+            <xdr:rowOff>19050</xdr:rowOff>
         </xdr:from>
         <xdr:to>
-            <xdr:col>1</xdr:col>
-            <xdr:colOff>7791450</xdr:colOff>
+            <xdr:col>0</xdr:col>
+            <xdr:colOff>7772400</xdr:colOff>
             <xdr:row>2</xdr:row>
-            <xdr:rowOff>4400550</xdr:rowOff>
+            <xdr:rowOff>4391025</xdr:rowOff>
         </xdr:to>
         <xdr:pic>
             <xdr:nvPicPr>
@@ -40,7 +40,7 @@
             </xdr:blipFill>
             <xdr:spPr>
                 <a:xfrm>
-                    <a:off x="781050" y="409575"/>
+                    <a:off x="0" y="400050"/>
                     <a:ext cx="7772400" cy="4371975"/>
                 </a:xfrm>
                 <a:prstGeom prst="rect">
