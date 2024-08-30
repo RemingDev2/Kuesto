@@ -1,0 +1,11 @@
+sheet1.xml
+
+<c></c> = cell
+<c r="..."></c> = int ( r = reference; "..." = cell reference)
+<c r="..." t="s"> ... </c> = string (t = type; "s" = string; ... = string index into sharedStrings.xml)
+
+
+sharedStrings.xml
+
+<si><t> ... </si></t> = string (...  = string content)
+sort by ASCII table (inversed ?)
