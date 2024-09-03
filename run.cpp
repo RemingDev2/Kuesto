@@ -1,5 +1,6 @@
 #include <iostream>
 #include "src/headers/excel/XLSXtraction.h"
+#include "src/headers/excel/DataXLSXtraction.h"
 #include <filesystem>
 
 
@@ -11,9 +12,13 @@ void clearTemp()
 int main() {
     std::cout << "Starting !" << std::endl;
 
-//    extractSheets("test.xlsx");
+    extractSheets("test.xlsx");
 
-//    clearTemp();
+    DataXLSXtraction obj;
+    obj.extractData();
+
+
+    clearTemp();
 
     std::cout << "Ending !" << std::endl;
 
