@@ -11,7 +11,7 @@ void extractSheets(const std::string& zipName)
 
     mz_zip_reader_init_file(&zipArchive, zipName.c_str(), 0); // init archive dans l'objet
 
-    std::string tempSheetsDir = "temp/extracted_sheets/"; // chemin dossier temporaire
+    std::string tempSheetsDir = "temp/xlsx_extracted/"; // chemin dossier temporaire
     std::filesystem::create_directories(tempSheetsDir); // init dossier temporaire pour traitement
 
     mz_uint nbrFiles = mz_zip_reader_get_num_files(&zipArchive); // recuperation nombre fichiers dans archive
@@ -25,13 +25,44 @@ void extractSheets(const std::string& zipName)
         std::string filePath = fileStats.m_filename; // recuperation chemin fichier acutellement traite
 
         std::string sheetsPath = "xl/worksheets/"; // chemin vers feuilles dans excel
-        if (!filePath.find(sheetsPath + "sheet")) // verification si feuille excel
-        {
-            std::string outPath = tempSheetsDir + filePath.substr(sheetsPath.length()); // init chemin sortie
+        std::string sharedStringsPath = "xl/"; // chemin vers le texte present des les feuilles
+        std::string imagePath = "xl/media/"; // chemin vers les images
+        std::string drawingsPath = "xl/drawings/"; // chemin vers le fichier gérant les images
 
-            mz_zip_reader_extract_to_file(&zipArchive, incr, outPath.c_str(),
-                                          0); // extraction fichier
-        }
+        std::string outPath = tempSheetsDir; // init chemin sortie
+
+        // update chemin sortie selon le cas
+        switch (filePath.find(sheetsPath + "sheet") == 0 ? 1 :
+                filePath.find(sharedStringsPath + "sharedStrings") == 0 ? 2 :
+                filePath.find(imagePath +  "image") == 0 ? 3 :
+                filePath.find(drawingsPath + "drawing") == 0 ? 4 : 0)
+                {
+                    case 1:
+                        // c'est une feuille
+                        outPath += filePath.substr(sheetsPath.length());
+                        break;
+
+                    case 2:
+                        // c'est le sharedStrings
+                        outPath += filePath.substr(sharedStringsPath.length());
+                        break;
+
+                    case 3:
+                        // c'est une image
+                        outPath += filePath.substr(imagePath.length());
+                        break;
+
+                    case 4:
+                        // c'est un handler d'image
+                        outPath += filePath.substr(drawingsPath.length());
+                        break;
+
+                    default:
+                        break;
+                }
+
+        mz_zip_reader_extract_to_file(&zipArchive, incr, outPath.c_str(),
+                                      0); // extraction fichier
     }
 
     mz_zip_reader_end(&zipArchive); // fermeture du zip
