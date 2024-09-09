@@ -38,38 +38,33 @@ void DataXLSXtraction::extractData()
         cell != nullptr; // jusqu'a pointeur 0 = plus de cellule sur ligne
         cell = cell->NextSiblingElement("c")) // aller prochaine cellule
         {
-            std::cout << cell->Attribute("r") << std::endl;
+            // attention cellule vide au milieu !
             // considerons pour le moment que les reponses sont en lignes et non en colonnes
-            // switch (cell->Attribute())
-            // {
-
-            // }
 
             std::string rowCellAttribute = cell->Attribute("r");
-            switch (rowCellAttribute.find('A' == 0 ? 1 :
+            switch (rowCellAttribute.find('A') == 0 ? 1 :
                     rowCellAttribute.find('B') == 0 ? 2 :
                     rowCellAttribute.find('C') == 0 ? 3 :
                     0)
             {
                 case 1:
+                    // une categorie peut pas être un bombre
+                    // recuperer valeur v
+                    // aller chercher dans liste sharedStrings à l'indice donne par v
                     break;
                 case 2:
+                    if (cell->Attribute("t") == "s")
+                    {
+                        // recuperer valeur v
+                        // aller chercher dans liste sharedStrings à l'indice donne par v
+                        continue;
+                    }
                     break;
                 case 3:
                     break;
                 default:
                     break;
             }
-
-            // si r="A." = categorie
-                // si t="s" = texte
-                    // recuperer valeur v
-                    // aller chercher dans liste sharedStrings à l'indice donne par v
-                // sinon recuperer valeur de v
-            // sinon si r="B." = question
-                // si t="s" = texte
-                    // recuperer valeur v
-                    // aller chercher dans liste sharedStrings à l'indice donne par v
                 // sinon recupere valeur de v
             // sinon si r="C." lettre suivante
                 // si t="s" = texte
