@@ -1,6 +1,7 @@
 #include "../../headers/excel/DataXLSXtraction.h"
 #include "../../../external/tinyxml2/tinyxml2.h"
 #include <filesystem>
+#include <regex>
 #include <iostream>
 
 
@@ -37,7 +38,28 @@ void DataXLSXtraction::extractData()
         cell != nullptr; // jusqu'a pointeur 0 = plus de cellule sur ligne
         cell = cell->NextSiblingElement("c")) // aller prochaine cellule
         {
-            // considerons pour le moment que les reponses sont en lignes et non en colonne
+            std::cout << cell->Attribute("r") << std::endl;
+            // considerons pour le moment que les reponses sont en lignes et non en colonnes
+            // switch (cell->Attribute())
+            // {
+
+            // }
+
+            std::string rowCellAttribute = cell->Attribute("r");
+            switch (rowCellAttribute.find('A' == 0 ? 1 :
+                    rowCellAttribute.find('B') == 0 ? 2 :
+                    rowCellAttribute.find('C') == 0 ? 3 :
+                    0)
+            {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
 
             // si r="A." = categorie
                 // si t="s" = texte

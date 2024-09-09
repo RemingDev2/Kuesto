@@ -35,7 +35,8 @@ void extractSheets(const std::string& zipName)
         switch (filePath.find(sheetsPath + "sheet") == 0 ? 1 :
                 filePath.find(sharedStringsPath + "sharedStrings") == 0 ? 2 :
                 filePath.find(imagePath +  "image") == 0 ? 3 :
-                filePath.find(drawingsPath + "drawing") == 0 ? 4 : 0)
+                filePath.find(drawingsPath + "drawing") == 0 ? 4 :
+                0)
                 {
                     case 1:
                         // c'est une feuille
