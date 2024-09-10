@@ -2,6 +2,7 @@
 #include "../../../external/miniz/miniz.h"
 #include <string>
 #include <filesystem>
+#include <iostream>
 
 
 void extractSheets(const std::string& zipName)
@@ -13,6 +14,9 @@ void extractSheets(const std::string& zipName)
 
     std::string tempSheetsDir = "temp/xlsx_extracted/"; // chemin dossier temporaire
     std::filesystem::create_directories(tempSheetsDir); // init dossier temporaire pour traitement
+    // init dossier feuille temporaire pour traitement (car toujours 1 feuille min)
+    std::filesystem::create_directories(tempSheetsDir+"sheetsDir/");
+
 
     mz_uint nbrFiles = mz_zip_reader_get_num_files(&zipArchive); // recuperation nombre fichiers dans archive
 
@@ -40,7 +44,7 @@ void extractSheets(const std::string& zipName)
                 {
                     case 1:
                         // c'est une feuille
-                        outPath += filePath.substr(sheetsPath.length());
+                        outPath += "sheetsDir/" + filePath.substr(sheetsPath.length());
                         break;
 
                     case 2:
@@ -50,12 +54,16 @@ void extractSheets(const std::string& zipName)
 
                     case 3:
                         // c'est une image
-                        outPath += filePath.substr(imagePath.length());
+                        // init dossier temporaire images pour traitement
+                        std::filesystem::create_directories(tempSheetsDir+"imagesDir/");
+                        outPath += "imagesDir/" + filePath.substr(imagePath.length());
                         break;
 
                     case 4:
                         // c'est un handler d'image
-                        outPath += filePath.substr(drawingsPath.length());
+                        // init dossier temporaire drawings pour traitement
+                        std::filesystem::create_directories(tempSheetsDir+"drawingsDir/");
+                        outPath += "drawingsDir/" + filePath.substr(drawingsPath.length());
                         break;
 
                     default:
