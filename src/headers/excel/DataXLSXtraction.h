@@ -10,12 +10,16 @@ class DataXLSXtraction {
 
 public:
     void extractData();
-    std::map<std::string, std::map<std::string, std::string>> getMap();
+    std::map<std::string, std::map<std::string, std::vector<std::string>>> getMap();
 
 private:
-    std::map<std::string, std::map<std::string, std::string>> dataMap;
-    std::vector<std::string> answers;
-    std::vector<std::string> questions;
+    void sharedStringsExctraction();
+
+    std::string temporaryDir = "temp/xlsx_extracted/"; // chemin vers dossier temporaire
+
+    std::vector<std::string> sharedStringsVector;
+
+    std::map<std::string, std::map<std::string, std::vector<std::string>>> dataMap; // map contenant les donnees du xlsx
 };
 
 

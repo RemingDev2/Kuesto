@@ -17,6 +17,24 @@ int main() {
     DataXLSXtraction obj;
     obj.extractData();
 
+    for (const auto& keys : obj.getMap())
+    {
+        std::cout << keys.first << " ";
+
+        for (const auto& keys2 : keys.second)
+        {
+            std::cout << keys2.first << " ";
+
+            for (const auto& ans : keys2.second)
+            {
+                std::cout << ans << " ";
+            }
+
+            std::cout << std::endl << "  " ;
+        }
+        std::cout << std::endl;
+    }
+
 
     clearTemp();
 
