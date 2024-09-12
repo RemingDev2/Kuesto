@@ -12,7 +12,7 @@ void clearTemp()
 int main() {
     std::cout << "Starting !" << std::endl;
 
-    extractSheets("test.xlsx");
+    extractSheets("QCM_100_2.xlsx");
 
     DataXLSXtraction obj;
     obj.extractData();
