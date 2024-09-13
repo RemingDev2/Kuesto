@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Kuesto run.cpp
         external/miniz/miniz.c external/miniz/miniz.h
         external/tinyxml2/tinyxml2.cpp external/tinyxml2/tinyxml2.h
+        external/json/json.hpp
         src/files/excel/XLSXtraction.cpp src/headers/excel/XLSXtraction.h
         src/files/excel/DataXLSXtraction.cpp src/headers/excel/DataXLSXtraction.h
         src/files/ListRandomizer.cpp src/headers/ListRandomizer.h

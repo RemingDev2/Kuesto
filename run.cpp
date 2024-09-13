@@ -7,7 +7,7 @@
 void clearTemp()
 {
     std::filesystem::remove_all("temp/"); // suppression dossier "temp"
-};
+}
 
 int main() {
     std::cout << "Starting !" << std::endl;
