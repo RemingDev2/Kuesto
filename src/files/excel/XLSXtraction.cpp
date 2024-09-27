@@ -1,3 +1,9 @@
+/* Ce fichier permet l'extraction des fichiers XML qui composent le fichier XLSX
+ * On a besoin des feuilles (1 ou+) (sheet)
+ * Du texte présent dans la feuille (1) (sharedStrings)
+ * Des images handlers (0+) (drawing)
+ * Des images elles même (0+) (image) */
+
 #include "../../headers/excel/XLSXtraction.h"
 #include "../../../external/miniz/miniz.h"
 #include <string>
